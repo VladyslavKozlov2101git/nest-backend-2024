@@ -25,14 +25,14 @@ model User {
 }
 
 model Task {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  id          String    @id @default(cuid())
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
   name        String
-  priority    Prioity?
-  isCompleted Boolean? @default(false) @map("is_completed")
-  userId      String   @map("user_id")
-  user        User     @relation(fields: [userId], references: [id])
+  priority    Priority?
+  isCompleted Boolean?  @default(false) @map("is_completed")
+  userId      String    @map("user_id")
+  user        User      @relation(fields: [userId], references: [id])
 
   @@map("task")
 }
@@ -75,7 +75,7 @@ model PomodoroRound {
   @@map("pomodoro_round")
 }
 
-enum Prioity {
+enum Priority {
   low
   medium
   high
